@@ -6,7 +6,6 @@ const exec = require('child_process').execSync
 const fs = require('fs')
 const rp = require('request-promise')
 const download = require('download')
-const urlencode = require('urlencode');
 
 // 京东Cookie
 const cookie = process.env.JD_COOKIE
@@ -72,14 +71,15 @@ function sendNotificationIfNeed() {
     console.log('没有执行结果，任务中断!'); return;
   }
 
-  let text = urlencode("京东签到_" + dateFormat());
-  let desp = urlencode(fs.readFileSync(result_path, "utf8"))
+  let title = "京东签到_" + dateFormat();
+  let body = fs.readFileSync(result_path, "utf8")
 
   // 去除末尾的换行
   let SCKEY = push_key.replace(/[\r\n]/g,"")
 
   const options ={
-    uri:  `https://api.day.app/${SCKEY}/t/`,
+    uri:  `https://api.day.app/${SCKEY}/`,
+    form: { title, body },
     json: false,
     method: 'POST'
   }
@@ -96,6 +96,7 @@ function sendNotificationIfNeed() {
     }
   }).catch((err)=>{
     console.log("通知发送失败，任务中断！")
+    fs.writeFileSync(error_path, body, 'utf8')
     fs.writeFileSync(error_path, err, 'utf8')
   })
 }
