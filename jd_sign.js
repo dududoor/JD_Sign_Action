@@ -95,8 +95,7 @@ function sendNotificationIfNeed() {
       fs.writeFileSync(error_path, JSON.stringify(res), 'utf8')
     }
   }).catch((err)=>{
-    console.log("通知发送失败，任务中断！")
-    fs.writeFileSync(error_path, body, 'utf8')
+    console.log("通知发送失败，任务中断！!")
     fs.writeFileSync(error_path, err, 'utf8')
   })
 }
