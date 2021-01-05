@@ -72,7 +72,7 @@ function sendNotificationIfNeed() {
   }
 
   let title = "京东签到_" + dateFormat();
-  let body = fs.readFileSync(result_path, "utf8")
+  let body = fs.readFileSync(result_path, "utf8").substring(0,100)
 
   // 去除末尾的换行
   let SCKEY = push_key.replace(/[\r\n]/g,"")
@@ -85,8 +85,8 @@ function sendNotificationIfNeed() {
   }
 
   rp.post(options).then(res=>{
-    const code = res['errno'];
-    if (code == 0) {
+    const code = res['code'];
+    if (code == 200) {
       console.log("通知发送成功，任务结束！")
     }
     else {
