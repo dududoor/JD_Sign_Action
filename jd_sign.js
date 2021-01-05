@@ -78,8 +78,7 @@ function sendNotificationIfNeed() {
   let SCKEY = push_key.replace(/[\r\n]/g,"")
 
   const options ={
-    uri:  `https://api.day.app/${SCKEY}/${text}/${desp}`,
-    form: { text, desp },
+    uri:  `https://api.day.app/${SCKEY}/${text}/`,
     json: false,
     method: 'POST'
   }
