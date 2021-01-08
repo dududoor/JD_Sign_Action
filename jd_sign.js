@@ -76,24 +76,17 @@ function sendNotificationIfNeed() {
 
   // 去除末尾的换行
   let SCKEY = push_key.replace(/[\r\n]/g,"")
+  let isArchive = 0
 
   const options ={
     uri:  `https://api.day.app/${SCKEY}/`,
-    form: { title, body },
+    form: { title, body, isArchive },
     json: false,
     method: 'POST'
   }
 
   rp.post(options).then(res=>{
-    const code = res['code'];
-    if (code == 200) {
-      console.log("通知发送成功，任务结束！")
-    }
-    else {
-      console.log(res);
-      console.log("通知发送失败，任务中断！")
-      fs.writeFileSync(error_path, JSON.stringify(res), 'utf8')
-    }
+    console.log("通知发送成功，任务结束！")
   }).catch((err)=>{
     console.log("通知发送失败，任务中断！!")
     fs.writeFileSync(error_path, err, 'utf8')
