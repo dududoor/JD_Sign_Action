@@ -12,7 +12,7 @@
 
 ## 注意问题
 
-> **问题一：[项目Fork后定时任务没有执行](https://github.com/ZHDeveloper/JD_Sign_Action/issues/3)**
+> **问题一：项目Fork后定时任务没有执行**
 > 
 >>1、建议修改README.md提交，以触发定时任务。
 >>
@@ -61,3 +61,5 @@
 * [NobyDa/Script/JD-DailyBonus](https://github.com/NobyDa/Script/blob/master/JD-DailyBonus/JD_DailyBonus.js)
 * [ruicky/jd-sign-bot](https://github.com/ruicky/jd_sign_bot)
 * [jerrykuku/luci-app-jd-dailybonus](https://github.com/jerrykuku/luci-app-jd-dailybonus)
+
+
